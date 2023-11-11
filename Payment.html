@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Payment Page</title>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            width: 400px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #666;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .card-wrapper {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            height: 200px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-face.front {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .card-face.back {
+            background-color: #2ecc71;
+            color: #fff;
+            transform: rotateY(180deg);
+        }
+
+        button {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Secure Payment</h2>
+        <form id="payment-form">
+            <label for="cardNumber">Card Number:</label>
+            <div class="card-wrapper">
+                <div class="card" id="card">
+                    <div class="card-face front">
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number" required>
+                    </div>
+                    <div class="card-face back">
+                        <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+                    </div>
+                </div>
+            </div>
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YYYY" required>
+
+            <label for="cardType">Card Type:</label>
+            <select id="cardType" name="cardType" required>
+                <option value="visa">Visa</option>
+                <option value="mastercard">MasterCard</option>
+                <option value="amex">American Express</option>
+            </select>
+
+            <button type="submit">Make Payment</button>
+            <p><a href="Home.html">Back to HomePage</a></p>
+            <div class="error-message" id="error-message"></div>
+        </form>
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        const form = document.getElementById('payment-form');
+        const errorMessage = document.getElementById('error-message');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Perform form validation here
+            // For demonstration purposes, show an error message
+            errorMessage.textContent = 'Invalid card information. Please check and try again.';
+        });
+
+        card.addEventListener('click', function () {
+            card.classList.toggle('flipped');
+        });
+    </script>
+</body>
+</html>

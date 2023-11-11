@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login/Register Page</title>
+  <link rel="stylesheet" href="style/style.css">
+  
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: rgb(255, 106, 0);
+      background-image: url("img/bg\,f8f8f8-flat\,750x\,075\,f-pad\,750x1000\,f8f8f8.u1.jpg");
+      background-repeat: repeat;
+  
+    }
+
+    .container {
+      background-color: #fff9f9;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      width: 400px;
+      max-width: 100%;
+    }
+
+    .tabs {
+      display: flex;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 18px;
+      color: #555;
+      background-color: #f9f9f9;
+      transition: background-color 0.3s;
+    }
+
+    .tab:hover {
+      background-color: #e6e6e6;
+    }
+
+    .active-tab {
+      background-color: #fff;
+      border-bottom: 2px solid #3498db;
+      color: #3498db;
+    }
+
+    .form-container {
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #3498db;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .form-group button:hover {
+      background-color: #2980b9;
+    }
+
+    .form-group .switch {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .form-group .switch a {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .form-group .switch a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <div class="tab active-tab" onclick="showTab('login')">Login</div>
+      <div class="tab" onclick="showTab('register')">Register</div>
+    </div>
+    <div class="form-container">
+      <form id="login-form" class="form-group">
+        <label for="login-username">Username:</label>
+        <input type="text" id="login-username" name="login-username" required>
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" name="login-password" required>
+        <button type="submit">Login</button>
+      </form>
+      <form id="register-form" class="form-group" style="display: none;">
+        <label for="register-username">Username:</label>
+        <input type="text" id="register-username" name="register-username" required>
+        <label for="register-email">Email:</label>
+        <input type="email" id="register-email" name="register-email" required>
+        <label for="register-password">Password:</label>
+        <input type="password" id="register-password" name="register-password" required>
+        <button type="submit">Register</button>
+      </form>
+      <div class="switch">
+        <p>Already have an account? <a href="#" onclick="showTab('login')">Login here</a>.</p>
+        <p><a href="Home.html">Back to HomePage</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabName) {
+      const loginForm = document.getElementById('login-form');
+      const registerForm = document.getElementById('register-form');
+
+      if (tabName === 'login') {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+        document.querySelector('.login').classList.add('active-tab');
+        document.querySelector('.register').classList.remove('active-tab');
+      } else {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+        document.querySelector('.login').classList.remove('active-tab');
+        document.querySelector('.register').classList.add('active-tab');
+      }
+    }
+  </script>
+</body>
+</html>
